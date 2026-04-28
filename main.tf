@@ -18,22 +18,14 @@ data "aws_vpc" "default" {
   default = true
 }
 
-#resource "aws_instance" "blog" {
-#  ami           = data.aws_ami.app_ami.id
-#  instance_type = var.instance_type
+resource "aws_instance" "blog" {
+  ami           = data.aws_ami.app_ami.id
+  instance_type = var.instance_type
 
-#  vpc_security_group_ids = [module.blog_sg.security_group_id]
+  vpc_security_group_ids = [module.blog_sg.security_group_id]
 
-#  tags = {
-#    Name = "HelloWorld"
-#  }
-#}
-
-removed {
-  from = aws_instance.blog
-
-  lifecycle {
-    destroy = false
+  tags = {
+    Name = "HelloWorld"
   }
 }
 
